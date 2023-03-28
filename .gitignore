@@ -1,0 +1,10 @@
+
+# Ignore Visual Studio Code folder
+.vscode/*
+# Except tasks file
+!.vscode/tasks.json
+
+# Visual Studio Code Patch
+# Ignore all local history of files
+.history
+.ionide
