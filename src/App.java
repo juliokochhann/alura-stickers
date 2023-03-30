@@ -12,8 +12,8 @@ public class App {
         // API endpoint
         String url;
         // url = "https://imdb-api.com/en/API/Top250Movies/k_0ojt0yvm";
-        url = "https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/TopMovies.json";
-        // url = "https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/MostPopularMovies.json";
+        // url = "https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/TopMovies.json";
+        url = "https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/MostPopularMovies.json";
 
         URI uri = URI.create(url);
         var cliente = HttpClient.newHttpClient();   // var - tipo inferido automaticamente
@@ -27,14 +27,14 @@ public class App {
         List<Map<String, String>> listaDeFilmes = parser.parse(body);
 
         // Exibir os filmes
-        String title, year, poster, imDbRating, imdbLink;
+        String title, year, poster, imDbRating, imDbLink;
 
         for (Map<String, String> filme : listaDeFilmes) {
             title  = filme.get("title");
             year   = filme.get("year");
             poster = filme.get("image");
             imDbRating = filme.get("imDbRating");
-            imdbLink   = imdb_url + filme.get("id");
+            imDbLink   = imdb_url + filme.get("id");
 
             int stars = (int) Double.parseDouble(imDbRating);
 
@@ -42,14 +42,18 @@ public class App {
             System.out.println("[ " + year + " ]");
 
             System.out.print("\u001b[33m");
-            for (int n = 0; n < stars; n++) {
+            int n;
+            for (n = 1; n <= stars; n++) {
                 System.out.print(" ★ ");
+            }
+            for (; n <= 10; n++) {
+                System.out.print(" ☆ ");
             }
             System.out.println("\u001b[m");
 
             System.out.println("\u001b[1mRating:\u001b[m " + imDbRating);
             System.out.println("\u001b[1mPoster:\u001b[m " + poster);
-            System.out.println("\u001b[1mIMDb  :\u001b[m " + imdbLink + "\n");
+            System.out.println("\u001b[1mIMDb  :\u001b[m " + imDbLink + "\n");
         }
     }
 }
