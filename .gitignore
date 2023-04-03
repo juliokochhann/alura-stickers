@@ -1,3 +1,5 @@
+# Ignore output folder
+figurinhas/*
 
 # Ignore Visual Studio Code folder
 .vscode/*

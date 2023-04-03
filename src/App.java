@@ -1,4 +1,6 @@
+import java.io.InputStream;
 import java.net.URI;
+import java.net.URL;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
@@ -28,6 +30,7 @@ public class App {
 
         // Exibir os filmes
         String title, year, poster, imDbRating, imDbLink;
+        var gerador = new GeradorDeFigurinha();
 
         for (Map<String, String> filme : listaDeFilmes) {
             title  = filme.get("title");
@@ -54,6 +57,11 @@ public class App {
             System.out.println("\u001b[1mRating:\u001b[m " + imDbRating);
             System.out.println("\u001b[1mPoster:\u001b[m " + poster);
             System.out.println("\u001b[1mIMDb  :\u001b[m " + imDbLink + "\n");
+
+            InputStream inputStream = new URL(poster).openStream();
+            title = title.replace(":", "");
+            String nomeArquivo = title + ".png";
+            gerador.cria(inputStream, nomeArquivo, stars);
         }
     }
 }
