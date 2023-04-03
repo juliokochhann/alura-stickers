@@ -11,7 +11,7 @@ import javax.imageio.ImageIO;
 
 public class GeradorDeFigurinha {
     
-    public void cria(InputStream inputStream, String nomeArquivo, int stars) throws IOException {
+    public void cria(InputStream inputStream, String nomeArquivo) throws IOException {
         // Leitura da imagem
         // InputStream inputStream = 
         //              new FileInputStream(new File("entrada/filme-maior.jpg"));
@@ -38,15 +38,7 @@ public class GeradorDeFigurinha {
         graphics.setFont(fonte);
 
         // Escrever o texto na figurinha
-        String texto = "REGULAR";
-
-        if (stars >= 7) {
-            texto = "LEGAL";
-        }
-        
-        if (stars >= 8) {
-            texto = "TOPZERA";
-        }
+        String texto = "TOPZERA";
 
         FontMetrics fontMetrics  = graphics.getFontMetrics();
         Rectangle2D stringBounds = fontMetrics.getStringBounds(texto, graphics);
